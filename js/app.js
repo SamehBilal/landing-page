@@ -22,11 +22,11 @@
  * Define Global Variables
  *
 */
-let ul = document.querySelector("#navbar__list");
+var ul = document.querySelector("#navbar__list");
 var sections = document.querySelectorAll('section');
-let countSections = sections.length;
-let i = 1;
-let scrollTopButton = document.getElementById("scrollTopButton");
+var countSections = sections.length;
+var i = 1;
+var scrollTopButton = document.getElementById("scrollTopButton");
 
 /**
  * End Global Variables
@@ -119,9 +119,9 @@ window.addEventListener("scroll", function(event) {
     scrollButtonDisplaying();
     sections.forEach(element => {
         if (viewPort(element)) {
-            addClassActive(element)
+            addClassActive(element) // add class active
         }else{
-            removeClassActive(element)
+            removeClassActive(element) // remove class active
         }
     });
 }, false);
