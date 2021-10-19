@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 
 // Set sections as active
-window.addEventListener('scroll', function(event) {
+window.addEventListener("scroll", function(event) {
     scrollButtonDisplaying();
     sections.forEach(element => {
         if (viewPort(element)) {
