@@ -60,13 +60,31 @@ function sectionAppending(){
 
 // Viewport detection
 function viewPort(element) {
-    var bounding = element.getBoundingClientRect();
-    return (
+    var bounding    = element.getBoundingClientRect();
+    var Width       = window.innerWidth || document.documentElement.clientWidth;
+    var Height      = window.innerHeight || document.documentElement.clientHeight;
+    elementFrom     = function (x, y) { return document.elementFromPoint(x - 20, y - 20) };
+
+    if (bounding.right < 0 || bounding.bottom < 0 || bounding.left > Width || bounding.top > Height)
+    {
+        return false;
+    }else{
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            return true;
+        }else{
+            return (
+                element.contains(elementFrom(bounding.left,  bounding.top)) ||  element.contains(elementFrom(bounding.right, bounding.top)) ||  element.contains(elementFrom(bounding.right, bounding.bottom)) ||  element.contains(elementFrom(bounding.left,  bounding.bottom))
+            );
+        }
+    }
+
+    /* Old Code */
+    /*return (
         bounding.top >= 0 && bounding.left >= 0 &&
-        bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
+        bounding.bottom <= (Width) && bounding.right <= (Width)
+    );*/
 }
+
 
 // add class active to section and class active__link to nav
 function addClassActive(element) {
