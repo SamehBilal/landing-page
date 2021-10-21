@@ -22,11 +22,11 @@
  * Define Global Variables
  *
 */
-var ul = document.querySelector("#navbar__list");
-var sections = document.querySelectorAll('section');
-var countSections = sections.length;
-var i = 1;
-var scrollTopButton = document.getElementById("scrollTopButton");
+const ul = document.querySelector("#navbar__list");
+const sections = document.querySelectorAll('section');
+const countSections = sections.length;
+let i = 1;
+let scrollTopButton = document.getElementById("scrollTopButton");
 
 /**
  * End Global Variables
@@ -45,8 +45,8 @@ var scrollTopButton = document.getElementById("scrollTopButton");
 function sectionAppending(){
     for ( i; i <= countSections; i++)
     {
-        var li = document.createElement("li");
-        var a = document.createElement("a");
+        let li = document.createElement("li");
+        let a = document.createElement("a");
         li.className = "section"+i;
         a.className = "menu__link";
         a.setAttribute("onclick", "scrollToSection("+i+")"); // add scroll to ID function
@@ -60,9 +60,9 @@ function sectionAppending(){
 
 // Viewport detection
 function viewPort(element) {
-    var bounding    = element.getBoundingClientRect();
-    var Width       = window.innerWidth || document.documentElement.clientWidth;
-    var Height      = window.innerHeight || document.documentElement.clientHeight;
+    let bounding    = element.getBoundingClientRect();
+    let Width       = window.innerWidth || document.documentElement.clientWidth;
+    let Height      = window.innerHeight || document.documentElement.clientHeight;
     elementFrom     = function (x, y) { return document.elementFromPoint(x - 20, y - 20) };
 
     if (bounding.right < 0 || bounding.bottom < 0 || bounding.left > Width || bounding.top > Height)
@@ -89,22 +89,22 @@ function viewPort(element) {
 // add class active to section and class active__link to nav
 function addClassActive(element) {
     element.classList.add("active");
-    var dataNav = element.getAttribute("data-nav");
-    var className = document.querySelector("."+dataNav);
+    let dataNav = element.getAttribute("data-nav");
+    let className = document.querySelector("."+dataNav);
     className.classList.add("active__link")
 }
 
 // remove class active from and class active__link from nav
 function removeClassActive(element) {
     element.classList.remove("active");
-    var dataNav = element.getAttribute("data-nav");
-    var className = document.querySelector("."+dataNav);
+    let dataNav = element.getAttribute("data-nav");
+    let className = document.querySelector("."+dataNav);
     className.classList.remove("active__link")
 }
 
 // Scroll to anchor ID using scrollTO event
 function scrollToSection(anchor) {
-    var elementToView  = document.getElementById("section"+anchor);
+    let elementToView  = document.getElementById("section"+anchor);
     elementToView .scrollIntoView({behavior: "smooth"});
 }
 
